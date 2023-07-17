@@ -20,7 +20,7 @@ class Finger {
     message = json['message'];
     dni = json['dni'];
     fingerCode = json['finger_code'];
-    wspBase64 = json['wsp_base64'];
+    wspBase64 = json['wsq_base64'];
     transactionId = json['transaction_id'];
     imagePath = json['image_path'];
   }

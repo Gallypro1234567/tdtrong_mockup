@@ -20,7 +20,7 @@ class Connector {
       <image>$base64</image>
       <lv1Dir>FingerPrint</lv1Dir>
       <folderName>BACKUP</folderName>
-      <fileName>$fileName.wsq</fileName>
+      <fileName>$fileName</fileName>
       </ws:uploadImageByString>
       ]]></rawData>
       </Input>
@@ -36,7 +36,7 @@ class Connector {
       final response = await http.post(
         Uri.parse(soapEndpoint),
         headers: {
-          'Content-Type': 'application/soap+xml',
+          'Content-Type': 'text/xml; charset=utf-8',
           //'SOAPAction': soapAction,
         },
         body: strSOAP(imageBase64, fileName),

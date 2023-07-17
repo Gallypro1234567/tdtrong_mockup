@@ -26,7 +26,9 @@ class HomeController extends GetxController {
     if ((type ?? 0) == 1) {
       loading(loadingText: 'Đang xử lý'.obs);
       var res = await Connector.post(
-          imageBase64: finger.value.base64!, fileName: finger.value.hash256!);
+        imageBase64: finger.value.base64!,
+        fileName: '${finger.value.hash256!}.wsq',
+      );
       Get.back();
       if (res.success) {
         cautionDialog('Upload thành công', title: 'Thông báo');

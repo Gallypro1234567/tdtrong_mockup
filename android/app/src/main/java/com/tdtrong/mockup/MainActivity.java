@@ -1,7 +1,9 @@
 package com.tdtrong.mockup;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
@@ -64,7 +66,7 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
         }
         startActivityForResult(intent, REQUEST_FINGERSCAN);
     }
-
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -73,13 +75,14 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
         if (requestCode == REQUEST_FINGERSCAN) {
             if (resultCode == RESULT_OK) {
                 try {
-                    obj.put("code",data.getStringExtra("“error_code”"));
-                    obj.put("message",data.getStringExtra("“description”"));
+                    assert data != null;
+                    obj.put("code",data.getStringExtra("error_code"));
+                    obj.put("message",data.getStringExtra("description"));
                     obj.put("dni",data.getStringExtra("code"));
-                    obj.put("finger_code",data.getStringExtra("“finger_code”"));
-                    obj.put("wsq_base64",data.getStringExtra("“wsq_base64”"));
-                    obj.put("transaction_id",data.getStringExtra("“transaction_id”"));
-                    obj.put("image_path",data.getStringExtra("“image_path”"));
+                    obj.put("finger_code",data.getStringExtra("finger_code"));
+                    obj.put("wsq_base64",data.getStringExtra("wsq_base64"));
+                    obj.put("transaction_id",data.getStringExtra("transaction_id"));
+                    obj.put("image_path",data.getStringExtra("image_path"));
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

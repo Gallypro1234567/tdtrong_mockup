@@ -71,11 +71,12 @@ class _HomeViewState extends State<HomeView> {
       var data = Finger.fromJson(res);
       if (data.imagePath != null) {
         var file = File(data.imagePath!);
-        controller.finger.value = Biometrics(
+        var x = Biometrics(
           base64: data.wspBase64,
           hash256: await toHashSHA256(file),
           file: file,
         );
+        controller.finger.value = x;
       }
     }
   }
